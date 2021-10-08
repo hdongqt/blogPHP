@@ -6,9 +6,13 @@
             $this->UserModel  = $this->model("UserModel");
         }
         public function index(){
+          if(isset($_SESSION['username'])){
+            header("Location: ./Home");
+          }else{
             $this->view("web","main2",[
               "page" => "register",
             ]);
+          }
         }
         public function checkExistUser(){
             if(isset($_POST['username'])){
